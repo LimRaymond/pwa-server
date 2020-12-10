@@ -46,14 +46,15 @@ webpush.setVapidDetails(
 
 app.post('/notifications/subscribe', (req, res) => {
   const subscription = req.body;
-
-  const payload =
-    '{ "notification": {"title": "Hello World", "body: "un evenement", "data": {"url": "http://www.google.com"}} }';
+  const payload = {
+    title: 'testing',
+    body: 'success',
+  };
 
   console.log(subscription);
 
   webpush
-    .sendNotification(subscription, payload)
+    .sendNotification(subscription, JSON.stringify(payload))
     .then((result) => console.log(result))
     .catch((e) => console.log(e.stack));
 
