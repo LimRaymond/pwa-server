@@ -1,0 +1,106 @@
+{
+  "ERROR_REQUIRED": {
+    "en": "{$} is required",
+    "fr": "{$} est requis"
+  },
+  "ERROR_NOT_ALLOWED": {
+    "en": "{$} is not allowed",
+    "fr": "{$} n'est pas autorisé"
+  },
+  "ERROR_STRING_INVALID": {
+    "en": "{$} is invalid",
+    "fr": "{$} est invalide"
+  },
+  "ERROR_STRING_EMPTY": {
+    "en": "{$} is empty",
+    "fr": "{$} est vide"
+  },
+  "ERROR_STRING_ALPHANUM": {
+    "en": "{$} must only contain alphanumeric characters",
+    "fr": "{$} doit seulement contenir des caractères alphanumériques"
+  },
+  "ERROR_STRING_MIN": {
+    "en": "{$} is shorter than expected (min: {$})",
+    "fr": "{$} est trop court (min: {$})"
+  },
+  "ERROR_STRING_MAX": {
+    "en": "{$} is longer than expected (max: {$})",
+    "fr": "{$} est trop long (max: {$})"
+  },
+  "ERROR_EMAIL_INVALID": {
+    "en": "{$} is not a valid email address",
+    "fr": "{$} n'est pas une adresse email valide"
+  },
+  "ERROR_REGEX_MISMATCH": {
+    "en": "{$} fails to match the required pattern: {$}",
+    "fr": "{$} ne correspond pas au modèle requis: {$}"
+  },
+  "ERROR_PASSWORD_MISMATCH": {
+    "en": "Passwords must match",
+    "fr": "Les mots de passe doivent être identiques"
+  },
+  "ERROR_UNAUTHORIZED": {
+    "en": "Unauthorized",
+    "fr": "Non autorisé"
+  },
+  "ERROR_AUTHENTICATION": {
+    "en": "Authentication error",
+    "fr": "Erreur d'authentification"
+  },
+  "ERROR_404": {
+    "en": "404 - Not found",
+    "fr": "404 - Non trouvé"
+  },
+  "ERROR_USERNAME_EXIST": {
+    "en": "Username already exists",
+    "fr": "Ce nom d'utilisateur existe déjà"
+  },
+  "ERROR_EMAIL_EXIST": {
+    "en": "Email already exists",
+    "fr": "Cette adresse email existe déjà"
+  },
+  "ERROR_CHANNEL_EXIST": {
+    "en": "Channel already exists",
+    "fr": "Ce canal existe déjà"
+  },
+  "ERROR_INVALID_CREDENTIALS": {
+    "en": "Incorrect username or password",
+    "fr": "Nom d'utilisateur ou mot de passe incorrect"
+  },
+  "ERROR_BANNED": {
+    "en": "You are currently banned",
+    "fr": "Vous êtes actuellement banni"
+  },
+  "CHANNEL_CREATED": {
+    "en": "Channel created",
+    "fr": "Canal créé"
+  },
+  "CHANNEL_DELETED": {
+    "en": "Channel deleted",
+    "fr": "Canal supprimé"
+  },
+  "USER_CREATED": {
+    "en": "User created",
+    "fr": "Utilisateur créé"
+  },
+  "PROFILE_UPDATED": {
+    "en": "Profile updated",
+    "fr": "Profil mis à jour"
+  },
+  "SUCCESSFUL_LOGIN": {
+    "en": "Successful login",
+    "fr": "Connexion réussie"
+  },
+  "SUCCESSFUL_LOGOUT": {
+    "en": "Successful logout",
+    "fr": "Déconnexion réussie"
+  },
+  "HAS_LEFT_CHANNEL": {
+    "en": "{$} has left the channel",
+    "fr": "{$} a quitté le canal"
+  },
+  "HAS_JOINED_CHANNEL": {
+    "en": "{$} has joined the channel",
+    "fr": "{$} a rejoint le canal"
+  }
+}
