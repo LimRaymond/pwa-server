@@ -29,7 +29,7 @@ app.use(
     origin: [
       'http://localhost:3000',
       'http://localhost:8080',
-      'https://unptitfive-front.herokuapp.com',
+      'https://epi-pwa-front.herokuapp.com/',
     ],
   }),
 );
