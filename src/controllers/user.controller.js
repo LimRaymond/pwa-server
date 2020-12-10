@@ -2,15 +2,25 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const User = require('../models/user.model');
 const config = require('../../config/config.json');
+const webpush = require('web-push');
+
 const { translate } = require('../utils/utils');
 
 async function register(req, res) {
   const lang = req.acceptsLanguages();
-  if (await User.findOne({ username: { $regex: `^${req.body.username}$`, $options: 'i' } })) {
-    return res.status(400).json({ message: translate('ERROR_USERNAME_EXIST', lang) });
+  if (
+    await User.findOne({
+      username: { $regex: `^${req.body.username}$`, $options: 'i' },
+    })
+  ) {
+    return res
+      .status(400)
+      .json({ message: translate('ERROR_USERNAME_EXIST', lang) });
   }
   if (await User.findOne({ email: req.body.email.toLowerCase() })) {
-    return res.status(400).json({ message: translate('ERROR_EMAIL_EXIST', lang) });
+    return res
+      .status(400)
+      .json({ message: translate('ERROR_EMAIL_EXIST', lang) });
   }
 
   const hash = await bcrypt.hash(req.body.password, 10);
@@ -30,8 +40,10 @@ async function login(req, res) {
   const lang = req.acceptsLanguages();
   const user = await User.findOne({ username: req.body.username });
 
-  if (!user || !await bcrypt.compare(req.body.password, user.password)) {
-    return res.status(400).json({ message: translate('ERROR_INVALID_CREDENTIALS', lang) });
+  if (!user || !(await bcrypt.compare(req.body.password, user.password))) {
+    return res
+      .status(400)
+      .json({ message: translate('ERROR_INVALID_CREDENTIALS', lang) });
   }
   if (user.is_ban) {
     return res.status(400).json({ message: translate('ERROR_BANNED', lang) });
@@ -40,24 +52,29 @@ async function login(req, res) {
   const newtoken = jwt.sign(user._id.toHexString(), config.JWT_SECRET);
   await User.updateOne({ _id: user._id }, { token: newtoken });
 
-  return res.status(200).cookie('auth', newtoken).json({
-    message: translate('SUCCESSFUL_LOGIN', lang),
-    user: {
-      id: user._id,
-      username: user.username,
-      email: user.email,
-      is_admin: user.is_admin,
-      is_mute: user.is_mute,
-      is_ban: user.is_ban,
-      token: newtoken,
-    },
-  });
+  return res
+    .status(200)
+    .cookie('auth', newtoken)
+    .json({
+      message: translate('SUCCESSFUL_LOGIN', lang),
+      user: {
+        id: user._id,
+        username: user.username,
+        email: user.email,
+        is_admin: user.is_admin,
+        is_mute: user.is_mute,
+        is_ban: user.is_ban,
+        token: newtoken,
+      },
+    });
 }
 
 async function logout(req, res) {
   const lang = req.acceptsLanguages();
   await User.updateOne({ _id: req.user._id }, { $unset: { token: 1 } });
-  return res.status(200).json({ message: translate('SUCCESSFUL LOGOUT', lang) });
+  return res
+    .status(200)
+    .json({ message: translate('SUCCESSFUL LOGOUT', lang) });
 }
 
 async function profile(req, res) {
@@ -78,13 +95,22 @@ async function editProfile(req, res) {
   const lang = req.acceptsLanguages();
   const updates = req.body;
 
-  if (updates.username && await User.findOne({ username: { $regex: `^${updates.username}$`, $options: 'i' } })) {
-    return res.status(400).json({ message: translate('ERROR_USERNAME_EXIST', lang) });
+  if (
+    updates.username &&
+    (await User.findOne({
+      username: { $regex: `^${updates.username}$`, $options: 'i' },
+    }))
+  ) {
+    return res
+      .status(400)
+      .json({ message: translate('ERROR_USERNAME_EXIST', lang) });
   }
   if (updates.email) {
     updates.email = updates.email.toLowerCase();
     if (await User.findOne({ email: updates.email })) {
-      return res.status(400).json({ message: translate('ERROR_EMAIL_EXIST', lang) });
+      return res
+        .status(400)
+        .json({ message: translate('ERROR_EMAIL_EXIST', lang) });
     }
   }
 
