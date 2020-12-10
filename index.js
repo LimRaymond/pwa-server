@@ -40,7 +40,7 @@ webpush.setVapidDetails(
   'nPL9HYhcZWVZcyJmobSad7SLZcStuXfZLDSymnNxb38',
 );
 
-app.post('/notifications/subscribe', (req, res) => {
+app.post('notifications/subscribe', (req, res) => {
   const subscription = req.body;
 
   console.log(subscription);
