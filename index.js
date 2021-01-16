@@ -65,7 +65,7 @@ app.post('/notifications/subscribe', (req, res) => {
   res.status(200).json({ success: true });
 });
 
-app.listen(port);
+// app.listen(port);
 
 // // Handle Error 404
 // app.use((req, res) => {
@@ -73,8 +73,8 @@ app.listen(port);
 //   res.status(404).json({ message: translate('ERROR_404', lang) });
 // });
 
-// startSocket(io);
+startSocket(io);
 
-// server.listen(port, () => {
-//   console.log(`Server running at PORT = ${port}`);
-// });
+server.listen(port, () => {
+  console.log(`Server running at PORT = ${port}`);
+});
