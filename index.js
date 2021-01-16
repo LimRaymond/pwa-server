@@ -26,17 +26,17 @@ app.use(bodyparser.json());
 app.get('/', (req, res) => {
   res.send('Hello World!');
 });
-// app.use(cookieParser());
-// app.use(
-//   cors({
-//     credentials: true,
-//     origin: [
-//       'http://localhost:3000',
-//       'http://localhost:8080',
-//       'https://epi-pwa-front.herokuapp.com/',
-//     ],
-//   }),
-// );
+app.use(cookieParser());
+app.use(
+  cors({
+    credentials: true,
+    origin: [
+      'http://localhost:3000',
+      'http://localhost:8080',
+      'https://epi-pwa-front.herokuapp.com/',
+    ],
+  }),
+);
 
 webpush.setVapidDetails(
   'mailto: corentin@outlook.com',
