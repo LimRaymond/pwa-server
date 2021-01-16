@@ -44,6 +44,10 @@ webpush.setVapidDetails(
   'nPL9HYhcZWVZcyJmobSad7SLZcStuXfZLDSymnNxb38',
 );
 
+routes.routes.forEach((r) => {
+  app.use(r.name, r.router);
+});
+
 app.post('/notifications/subscribe', (req, res) => {
   const subscription = req.body;
   const payload = {
@@ -62,10 +66,6 @@ app.post('/notifications/subscribe', (req, res) => {
 });
 
 app.listen(port);
-
-// routes.routes.forEach((r) => {
-//   app.use(r.name, r.router);
-// });
 
 // // Handle Error 404
 // app.use((req, res) => {
