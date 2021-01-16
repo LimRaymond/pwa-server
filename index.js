@@ -14,13 +14,13 @@ const webpush = require('web-push');
 const port = process.env.PORT || 8080;
 const db = process.env.DATABASE_URL || 'mongodb://localhost:27017/unptitfive';
 
-// mongoose.connect(db, {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-//   useCreateIndex: true,
-// });
+mongoose.connect(db, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+});
 
-// app.use(bodyparser.urlencoded({ extended: false }));
+app.use(bodyparser.urlencoded({ extended: false }));
 app.use(cors());
 app.use(bodyparser.json());
 app.get('/', (req, res) => {
